@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portafolio | Mateo López</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .foto-perfil {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin: 0 auto 1rem auto;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .foto-perfil img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .school {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    nav {
+      background: #2c3e50;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 1rem;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    nav a:hover {
+      background: #34495e;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 3rem 1rem;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .skills span {
+      background: #3498db;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+
+    .skills span:hover {
+      transform: scale(1.1);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #2c3e50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="inicio">
+    <div class="foto-perfil">
+      <img src="mateo.jpg" alt="Mateo López">
+    </div>
+    <h1>Mateo López</h1>
+    <p class="school">Estudiante del INEM José Félix de Restrepo</p>
+    <p>Desarrollador apasionado por crear soluciones funcionales e inteligentes</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#lenguajes">Lenguajes</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <section id="lenguajes">
+    <h2>Lenguajes que domino</h2>
+    <div class="skills">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>PHP</span>
+      <span>SQL</span>
+      <span>Java</span>
+      <span>Python</span>
+      <span>C#</span>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <h2>Mis proyectos</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Gestor de Tareas</h3>
+        <p>App web con PHP y SQL para organizar tareas, con filtros por prioridad y fecha.</p>
+      </div>
+      <div class="project-card">
+        <h3>Simulador Físico</h3>
+        <p>Simulación de caída libre y MRUV en Java con interfaz gráfica interactiva.</p>
+      </div>
+      <div class="project-card">
+        <h3>Bot de Telegram</h3>
+        <p>Bot en Python para consultar clima y noticias, con comandos personalizados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>¿Te interesa colaborar o conocer más? Escribe a <a href="mailto:mateo@email.com">mateo@email.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Mateo López. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const showOnScroll = () => {
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < window.innerHeight * 0.85) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', showOnScroll);
+    window.addEventListener('load', showOnScroll);
+  </script>
+
+</body>
+</html>
